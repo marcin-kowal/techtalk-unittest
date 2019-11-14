@@ -83,7 +83,7 @@ A unit test should have the following properties:
 <br />
 
 ## <a name="FinalDefinition">Final definition</a>
-[<<](#Properties) [>>](#Types)
+[<<](#Properties) [>>](#Frameworks)
 
 ### Unit Test
 A unit test is an automated piece of code that invokes the __unit of work__ being tested, and then checks some assumptions
@@ -92,6 +92,18 @@ about a single end result of that unit.
 A unit test is almost always written using a __unit testing framework__. It can be written easily and runs quickly.
 <br />
 It’s trustworthy, readable, and maintainable. It’s consistent in its results as long as production code hasn’t changed.
+
+### Unit Of Work
+A unit of work is the sum of actions that take place between the invocation of a public method in the system and a single 
+noticeable end result by a test of that system. A noticeable end result can be observed without looking at the internal 
+state of the system and only through its public APIs and behavior.
+<br />
+An end result is any of the following:
+- The invoked public method returns a value (a function that’s not void)
+- There’s a noticeable change to the state or behavior of the system before and after invocation that can be determined 
+without interrogating private state.
+(Examples: the system can log in a user, or the system’s properties change if the system is a state machine)
+- There’s a callout to a third-party system over which the test has no control
 
 ### Unit Test construction
 - Arrange - initialize objects or services and prepare data
@@ -126,8 +138,45 @@ It’s trustworthy, readable, and maintainable. It’s consistent in its results
 <br />
 <br />
 
+## <a name="Frameworks">Unit test frameworks</a>
+[<<](#FinalDefinition) [>>](#Types)
+
+### Frameworks
+- unit test framework with runner e.g.: nUnit, xUnit, jUnit, Jasmin, Karma
+- fake data generator e.g.: AutoFixture, JFixture, faker.js
+- mock generator e.g.: Moq, NSubstitute, Mockito
+- assertion framework e.g.: xUnit, FluentAssertions, AssertJ, assert.js
+
+<br />
+<br />
+
+### Demo :hammer:
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 ## <a name="Types">Types and naming</a>
-[<<](#FinalDefinition)
+[<<](#Frameworks)[>>](#Tdd)
 
 ### Types of unit tests
 - Test / Fact - for testing single specific scenario with fixed input and output. Usually parameterless.
@@ -156,6 +205,122 @@ Example: CalculateTest(...)
 
 ### Demo :hammer:
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## <a name="Tdd">Test driven development - TDD</a>
+[<<](#Types)[>>](#Profits)
+
+### TDD
+- think WHEN to write a test instead of HOW
+- test-first approach
+
+### Steps
+- add a test
+- run all tests and see if new test fails
+- create or update the code (logic)
+- run tests
+- refactor code of application
+
+<br />
+<br />
+
+### Demo :hammer:
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## <a name="Profits">Unit tests - pros & cons</a>
+[<<](#Tdd)[>>](#CaseStudy)
+
+### Pros
+- unit tests as a bug detector
+- unit tests as a guard of contract
+- unit tests as a guard of business logic
+- unit tests as a business logic documentation
+
+### Cons
+- additional effort during initial development
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## <a name="CaseStudy">Case study</a>
+[<<](#Profits)
+
+<br />
+<br />
+
+### Demo :hammer:
+
+<br />
+<br />
+<br />
+<br />
 <br />
 <br />
 <br />

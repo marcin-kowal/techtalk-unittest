@@ -2,7 +2,6 @@ using AutoFixture;
 using Bookstore.Application.Mapper;
 using Bookstore.Application.Model;
 using Bookstore.DataAccess.Model;
-using FluentAssertions;
 using Xunit;
 
 namespace Bookstore.Tests.Application.Mapper
@@ -16,7 +15,6 @@ namespace Bookstore.Tests.Application.Mapper
             var mapper = new BookDtoMapper();
 
             var fixture = new Fixture();
-
             var bookModel = fixture.Create<BookModel>();
 
             var expected = new BookDto()
@@ -31,7 +29,7 @@ namespace Bookstore.Tests.Application.Mapper
             var actual = mapper.Map(bookModel);
 
             // Assert
-            actual.Should().BeEquivalentTo(expected);
+            Assert.Equal(expected, actual);
         }
     }
 }
