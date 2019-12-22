@@ -8,7 +8,9 @@ namespace Bookstore.Tests.Domain.Service
     {
         [Theory]
         [InlineData("abc", "Abc")]
-        //""
+        [InlineData("aBC", "ABC")]
+        [InlineData("", "")]
+        //[InlineData(null, "")]
         public void MakeFirstLetterCapitalTest(
             string text,
             string expected)
@@ -22,14 +24,16 @@ namespace Bookstore.Tests.Domain.Service
 
         [Theory]
         [InlineData("aBC", "Abc")]
-        //""
-        public void MakeFirstLetterCapitalAndRestLowerTest(
+        [InlineData("ABC", "Abc")]
+        [InlineData("", "")]
+        //[InlineData(null, "")]
+        public void MakeFirstLetterCapitalAndLowerOthersTest(
             string text,
             string expected)
         {
             var helper = new StringHelper();
 
-            var actual = helper.MakeFirstLetterCapitalAndRestLower(text);
+            var actual = helper.MakeFirstLetterCapitalAndLowerOthers(text);
 
             actual.Should().BeEquivalentTo(expected);
         }

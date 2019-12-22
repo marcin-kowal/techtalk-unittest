@@ -7,7 +7,8 @@ namespace Bookstore.ConsoleTests
     {
         static void Main(string[] args)
         {
-            new BookDtoMapperTests().Map_Always_AllPropertiesMapped();
+            new BookDtoMapperTests()
+                .Map_Always_AllPropertiesMapped();
         }
     }
 }

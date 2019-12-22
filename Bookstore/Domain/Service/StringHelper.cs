@@ -12,7 +12,7 @@ namespace Bookstore.Domain.Service
                     match => match.Value.ToUpper());
         }
 
-        public string MakeFirstLetterCapitalAndRestLower(string text)
+        public string MakeFirstLetterCapitalAndLowerOthers(string text)
         {
             return MakeFirstLetterCapital(
                 text.ToLower());

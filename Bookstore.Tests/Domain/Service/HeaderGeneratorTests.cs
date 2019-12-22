@@ -38,7 +38,19 @@ namespace Bookstore.Tests.Domain.Service
                 }
             };
 
+            var agathaChristieEndlessNightBook = new BookModel()
+            {
+                Title = "endless night",
+                ReleaseDate = new DateTime(1967, 10, 30),
+                Author = new AuthorModel()
+                {
+                    FirstName = "agatha",
+                    LastName = "christie"
+                }
+            };
+
             yield return new object[] { joNesboPoliceBook, "Police - Jo Nesbo - 2013" };
+            yield return new object[] { agathaChristieEndlessNightBook, "Endless Night - Agatha Christie - 1967" };
         }
     }
 }

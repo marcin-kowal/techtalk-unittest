@@ -33,7 +33,7 @@ namespace Bookstore.ConsoleTests.Application.Mapper
                 Id = bookModel.Id,
                 Title = bookModel.Title,
                 ReleaseDate = bookModel.ReleaseDate,
-                AuthorName = authorModel.FirstName + " " + authorModel.LastName
+                AuthorName = authorModel.FirstName + " - " + authorModel.LastName
             };
 
             // Act

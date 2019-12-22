@@ -29,7 +29,10 @@ namespace Bookstore.Tests.Application.Mapper
             var actual = mapper.Map(bookModel);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected.Id, actual.Id);
+            Assert.Equal(expected.Title, actual.Title);
+            Assert.Equal(expected.ReleaseDate, actual.ReleaseDate);
+            Assert.Equal(expected.AuthorName, actual.AuthorName);
         }
     }
 }

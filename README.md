@@ -17,9 +17,12 @@ thing you’re testing as the SUT.
 
 <br />
 <br />
-
-### Demo :hammer:
-
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -47,16 +50,18 @@ thing you’re testing as the SUT.
 [<<](#BasicDefinition) [>>](#FinalDefinition)
 
 A unit test should have the following properties:
-- It should be automated and repeatable.
-- It should be easy to implement.
-- It should be relevant tomorrow.
+- It should be easy to implement - small & simple.
+- It should be relevant tomorrow - aviod testing private implementation details.
 - Anyone should be able to run it at the push of a button.
 - It should run quickly.
 - It should be consistent in its results (it always returns the same result if you don’t change anything between runs).
-- It should have full control of the unit under test.
+- It should be automated and repeatable.
+- It should have full control of the SUT.
 - It should be fully isolated (runs independently of other tests).
 - When it fails, it should be easy to detect what was expected and determine how to pinpoint the problem.
 
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -114,6 +119,8 @@ without interrogating private state.
 <br />
 
 ### Demo :hammer:
+<br />
+ConsoleTests for BookDtoMapper (console + vs runner)
 
 <br />
 <br />
@@ -138,19 +145,23 @@ without interrogating private state.
 <br />
 <br />
 
-## <a name="Frameworks">Unit test frameworks</a>
+## <a name="Frameworks">Unit test frameworks and tools</a>
 [<<](#FinalDefinition) [>>](#Types)
 
 ### Frameworks
 - unit test framework with runner e.g.: nUnit, xUnit, jUnit, Jasmin, Karma
 - fake data generator e.g.: AutoFixture, JFixture, faker.js
-- mock generator e.g.: Moq, NSubstitute, Mockito
+- simple mock generator (interface based) e.g.: Moq, NSubstitute, Mockito
+- advanced mock generator (constructor, static, private) e.g.: Fakes, JustMock, PowerMock
 - assertion framework e.g.: xUnit, FluentAssertions, AssertJ, assert.js
+- runners e.g.: console runner, VS runner
 
 <br />
 <br />
 
 ### Demo :hammer:
+<br />
+Tests for BookDtoMapper
 
 <br />
 <br />
@@ -185,7 +196,9 @@ without interrogating private state.
 ### Naming strategies
 - Test / Fact - name consists of 3 parts:
   - ```UnitOfWorkName``` - the name of the method or group of methods or classes you’re testing
-  - ```Scenario``` - the conditions under which the unit is tested, such as “bad login” or “invalid user” or “good password.” You could describe the parameters being sent to the public method or the initial state of the system when the unit of work is invoked such as “system out of memory” or “no users exist” or “user already exists”
+  - ```Scenario``` - the conditions under which the unit is tested, such as “bad login” or “invalid user” or “good password.” 
+  You could describe the parameters being sent to the public method or the initial state of the system when the unit of work is invoked 
+  such as “system out of memory” or “no users exist” or “user already exists”
   - ```ExpectedBehavior``` - what you expect the tested method to do under the specified conditions.
   This could be one of three possibilities:
     * return a value as a result (a real value, or an exception)
@@ -196,7 +209,7 @@ Example: Calculate_NoInputData_ThrowsException()
 <br />
 <br />
 
-- Test Case / Theory - name consists of 3 1 part with suffix: ```UnitOfWorkNameTest```
+- Test Case / Theory - name consists of single part with ```Test``` suffix: ```UnitOfWorkNameTest```
 <br />
 Example: CalculateTest(...)
 
@@ -204,6 +217,10 @@ Example: CalculateTest(...)
 <br />
 
 ### Demo :hammer:
+<br />
+BookDtoMapperTests and StringHelperTests
+<br />
+resultTypes in Samples
 
 <br />
 <br />
@@ -229,7 +246,7 @@ Example: CalculateTest(...)
 <br />
 
 ## <a name="Tdd">Test driven development - TDD</a>
-[<<](#Types)[>>](#Profits)
+[<<](#Types)[>>](#NonFunctional)
 
 ### TDD
 - think WHEN to write a test instead of HOW
@@ -246,6 +263,48 @@ Example: CalculateTest(...)
 <br />
 
 ### Demo :hammer:
+<br />
+StringHelperTests for NULL
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## <a name="NonFunctional">Non-functional unit tests</a>
+[<<](#Tdd)[>>](#Profits)
+
+### Tests for non-functional requirements
+- conventions - static code analysis (instead of code analyzers)
+- technical reqirements - instead of assumptions e.g.: "we will remember that ..."
+
+<br />
+<br />
+
+### Demo :hammer:
+<br />
+GeneralBaseControllerTests and GeneralValueObjectTests in SPR
 
 <br />
 <br />
@@ -271,13 +330,14 @@ Example: CalculateTest(...)
 <br />
 
 ## <a name="Profits">Unit tests - pros & cons</a>
-[<<](#Tdd)[>>](#CaseStudy)
+[<<](#NonFunctional)[>>](#Practices)
 
 ### Pros
 - unit tests as a bug detector
 - unit tests as a guard of contract
 - unit tests as a guard of business logic
 - unit tests as a business logic documentation
+- save time usually spent for debugging
 
 ### Cons
 - additional effort during initial development
@@ -309,13 +369,106 @@ Example: CalculateTest(...)
 <br />
 <br />
 
+## <a name="Practices">Good, bad and ugly practices</a>
+[<<](#Profits)[>>](#CaseStudy)
+
+### Good
+- single test checks single rule or condition (one or very few asserts)
+- tests are completely isolated and independent (parallel)
+- tests don't need mocking
+- follow clear naming conventions
+
+### Bad
+- tests for lack-of-error instead of covering actual feature
+- use reflection to test private logic (tight coupling)
+- swallow exception in "silent" catch section
+- use setup or clean-up logic (high test complexity)
+- tests work with external dependencies (logs, database etc.)
+- focus on 100% code coverage
+
+### Ugly
+- if you don't write tests you show disrespect to your BA and QA teams
+- if you have to mock a lot or tests are complex, it means you produce low-quality codebase
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 ## <a name="CaseStudy">Case study</a>
-[<<](#Profits)
+[<<](#Practices)[>>](#Untestable)
 
 <br />
 <br />
 
 ### Demo :hammer:
+HeaderGeneratorTests
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## <a name="Untestable">How (not) to write untestable code</a>
+[<<](#CaseStudy)
+
+### Options
+- write good code with tests
+- write bad code and refactor before testing
+- write bad code and use advanced tools for tests ($)
+
+<br />
+<br />
+
+### Demo :hammer:
+<br />
+BookstoreAppService
+<br />
+procedure.sql in Samples
 
 <br />
 <br />
